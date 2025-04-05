@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { motion } from "framer-motion";
 import { TrendingUpIcon } from "lucide-react";
 
@@ -38,7 +37,6 @@ export default function PointsResultDisplay({
         program
           ? {
               borderColor: "transparent",
-              ringColor: program.brandColor,
             }
           : {}
       }

@@ -90,16 +90,6 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
     }
   };
 
-  // Get gradient colors based on selected program
-  const getGradientColors = () => {
-    if (!selectedProgram) {
-      return "from-indigo-500 to-purple-600";
-    }
-
-    // Create a CSS-compatible gradient using the program's colors
-    return `from-[${selectedProgram.brandColor}] to-[${selectedProgram.secondaryColor || selectedProgram.brandColor}]`;
-  };
-
   return (
     <Card
       className={cn(
