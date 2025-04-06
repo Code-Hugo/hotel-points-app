@@ -1,6 +1,6 @@
 "use client";
 
-// import * as React from "react";
+//import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
@@ -34,31 +34,12 @@ export default function DatePicker({
   disabled = false,
 }: DatePickerProps) {
   return (
-    <div
-      className={cn("grid gap-2", className)}
-      data-pol-id="fmv1g5"
-      data-pol-file-name="date-picker"
-      data-pol-file-type="component"
-    >
-      <Label
-        htmlFor={`date-${label.toLowerCase().replace(/\s+/g, "-")}`}
-        data-pol-id="u1a5ct"
-        data-pol-file-name="date-picker"
-        data-pol-file-type="component"
-      >
+    <div className={cn("grid gap-2", className)}>
+      <Label htmlFor={`date-${label.toLowerCase().replace(/\s+/g, "-")}`}>
         {label}
       </Label>
-      <Popover
-        data-pol-id="zviv40"
-        data-pol-file-name="date-picker"
-        data-pol-file-type="component"
-      >
-        <PopoverTrigger
-          asChild
-          data-pol-id="yf4rnc"
-          data-pol-file-name="date-picker"
-          data-pol-file-type="component"
-        >
+      <Popover>
+        <PopoverTrigger asChild>
           <Button
             id={`date-${label.toLowerCase().replace(/\s+/g, "-")}`}
             variant={"outline"}
@@ -68,36 +49,16 @@ export default function DatePicker({
               disabled && "opacity-50 cursor-not-allowed",
             )}
             disabled={disabled}
-            data-pol-id="676w9y"
-            data-pol-file-name="date-picker"
-            data-pol-file-type="component"
           >
-            <CalendarIcon
-              className="mr-2 h-4 w-4"
-              data-pol-id="2wxj52"
-              data-pol-file-name="date-picker"
-              data-pol-file-type="component"
-            />
+            <CalendarIcon className="mr-2 h-4 w-4" />
             {date ? (
               format(date, "LLL dd, y")
             ) : (
-              <span
-                data-pol-id="q0qlrc"
-                data-pol-file-name="date-picker"
-                data-pol-file-type="component"
-              >
-                {placeholder}
-              </span>
+              <span>{placeholder}</span>
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent
-          className="w-auto p-0"
-          align="start"
-          data-pol-id="mcbr5a"
-          data-pol-file-name="date-picker"
-          data-pol-file-type="component"
-        >
+        <PopoverContent className="w-auto p-0" align="start">
           <Calendar
             initialFocus
             mode="single"
@@ -105,9 +66,12 @@ export default function DatePicker({
             onSelect={onDateChange}
             disabled={(date) => (minDate ? date < minDate : false)}
             className="rounded-md border"
-            data-pol-id="a8eqef"
-            data-pol-file-name="date-picker"
-            data-pol-file-type="component"
+            showOutsideDays={true}
+            weekStartsOn={1}
+            classNames={{
+              day_outside: "text-slate-300 opacity-50",
+              day: "h-9 w-9 text-center"
+            }}
           />
         </PopoverContent>
       </Popover>

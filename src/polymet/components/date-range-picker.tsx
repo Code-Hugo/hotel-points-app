@@ -1,7 +1,7 @@
 "use client";
 
 import { format } from "date-fns";
-import { enGB } from "date-fns/locale"; // ✅ Added for Monday-start week
+import { enGB } from "date-fns/locale";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
@@ -26,73 +26,41 @@ export default function DateRangePicker({
   onDateRangeChange,
 }: DateRangePickerProps) {
   return (
-    <div
-      className={cn("grid gap-2", className)}
-      data-pol-id="xy0gnl"
-      data-pol-file-name="date-range-picker"
-      data-pol-file-type="component"
-    >
-      <Popover data-pol-id="bz1z8x" data-pol-file-name="date-range-picker" data-pol-file-type="component">
-        <PopoverTrigger
-          asChild
-          data-pol-id="pbproy"
-          data-pol-file-name="date-range-picker"
-          data-pol-file-type="component"
-        >
+    <div className={cn("grid gap-2", className)}>
+      <Popover>
+        <PopoverTrigger asChild>
           <Button
-            variant={"outline"}
+            variant="outline"
             className={cn(
-              "w-full justify-start text-left font-normal",
-              !dateRange && "text-muted-foreground"
+              "w-full justify-start text-left font-normal h-11 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200",
+              !dateRange?.from && "text-muted-foreground"
             )}
-            data-pol-id="wamh1l"
-            data-pol-file-name="date-range-picker"
-            data-pol-file-type="component"
           >
-            <CalendarIcon
-              className="mr-2 h-4 w-4"
-              data-pol-id="w53hwi"
-              data-pol-file-name="date-range-picker"
-              data-pol-file-type="component"
-            />
+            <CalendarIcon className="mr-2 h-4 w-4" />
             {dateRange?.from ? (
               dateRange.to ? (
                 <>
-                  {format(dateRange.from, "LLL dd, y")} - {format(dateRange.to, "LLL dd, y")}
+                  {format(dateRange.from, "LLL dd, y")} –{" "}
+                  {format(dateRange.to, "LLL dd, y")}
                 </>
               ) : (
                 format(dateRange.from, "LLL dd, y")
               )
             ) : (
-              <span
-                data-pol-id="z4bmho"
-                data-pol-file-name="date-range-picker"
-                data-pol-file-type="component"
-              >
-                Select check-in & check-out dates
-              </span>
+              <span>Select check-in & check-out dates</span>
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent
-          className="w-auto p-0"
-          align="start"
-          data-pol-id="17yu33"
-          data-pol-file-name="date-range-picker"
-          data-pol-file-type="component"
-        >
+        <PopoverContent className="w-auto p-0" align="start">
           <Calendar
             initialFocus
             mode="range"
-            defaultMonth={dateRange?.from}
+            numberOfMonths={2}
             selected={dateRange}
             onSelect={onDateRangeChange}
-            numberOfMonths={2}
-            locale={enGB} // ✅ Make weeks start on Monday
+            defaultMonth={dateRange?.from}
+            locale={enGB}
             className="rounded-md border"
-            data-pol-id="yw75mm"
-            data-pol-file-name="date-range-picker"
-            data-pol-file-type="component"
           />
         </PopoverContent>
       </Popover>

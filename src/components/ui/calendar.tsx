@@ -79,8 +79,7 @@ function Calendar({
           buttonVariants({ variant: "ghost" }),
           "w-9 h-9 p-0 font-medium text-sm hover:bg-muted focus:outline-none"
         ),
-        day_selected:
-          "bg-primary text-white hover:bg-primary focus:bg-primary",
+        day_selected: "bg-primary text-white hover:bg-primary focus:bg-primary border-2 border-primary",
         day_today:
           "border border-primary text-primary font-bold",
         day_outside:
@@ -93,6 +92,9 @@ function Calendar({
         ...classNames,
       }}
       {...props}
+      disabled={{
+        before: new Date(),
+      }}
     />
   )
 }
