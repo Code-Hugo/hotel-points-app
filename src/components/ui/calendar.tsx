@@ -14,7 +14,7 @@ function CustomNav() {
   const { goToMonth, previousMonth, nextMonth } = useNavigation()
 
   return (
-    <div className="flex items-center justify-between w-full px-4 mb-2">
+    <div className="flex items-center justify-between px-4 mb-1">
       <button
         type="button"
         onClick={() => previousMonth && goToMonth(previousMonth)}
@@ -51,7 +51,7 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       locale={enGB}
       className={cn(
-        "w-full max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg border border-gray-200",
+        "w-full max-w-md mx-auto p-4 bg-white rounded-xl shadow border",
         className
       )}
       components={{
@@ -59,17 +59,18 @@ function Calendar({
         Nav: CustomNav,
       }}
       classNames={{
-        months: "flex flex-col space-y-4",
-        month: "space-y-4",
-        caption: "flex justify-center text-xl font-semibold text-gray-900",
-        nav: "flex items-center justify-between w-full px-2",
-        table: "w-full border-collapse text-sm",
-        head_row: "",
+        months: "space-y-4",
+        month: "space-y-1",
+        caption: "text-center text-lg font-semibold",
+        caption_label: "text-lg font-bold",
+        nav: "flex items-center justify-between",
+        table: "w-full border-collapse table-fixed text-sm",
+        head_row: "text-center",
         head_cell:
-          "text-muted-foreground text-center font-semibold text-xs py-1",
+          "text-muted-foreground font-semibold text-xs py-1 px-2 text-center",
         row: "",
         cell: cn(
-          "text-center w-[40px] h-[40px] p-0 align-middle",
+          "text-center p-1 align-middle",
           props.mode === "range"
             ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md"
             : "[&:has([aria-selected])]:rounded-md"
@@ -80,7 +81,8 @@ function Calendar({
         ),
         day_selected:
           "bg-primary text-white hover:bg-primary focus:bg-primary",
-        day_today: "border border-primary text-primary font-bold",
+        day_today:
+          "border border-primary text-primary font-bold",
         day_outside:
           "text-muted-foreground opacity-50 aria-selected:bg-accent/50",
         day_disabled: "text-muted-foreground opacity-50",
