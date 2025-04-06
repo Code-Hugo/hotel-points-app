@@ -339,6 +339,16 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           Calculate Points
         </Button>
       </CardFooter>
+      <div
+        className="text-xs text-left text-slate-500 dark:text-slate-400 mt-4 p-2 border-t border-slate-200 dark:border-slate-700"
+        data-pol-id="disclaimer"
+        data-pol-file-name="points-calculator"
+        data-pol-file-type="component"
+      >
+        <strong>Disclaimer:</strong> StaysPoints is an independent project created for informational and illustrative purposes only. This website is not affiliated with, endorsed by, or sponsored by any hotel brand displayed herein. All trademarks, brand names, and logos are the property of their respective owners.
+        <br /><br />
+        The points estimates shown are amateur calculations based on publicly available data and are intended for illustrative purposes only. They should not be considered accurate representations of actual loyalty program earnings. Always refer to the official websites of each hotel brand for up-to-date and accurate rewards information.
+      </div>
     </Card>
   );
 }

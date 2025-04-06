@@ -97,17 +97,17 @@ export default function LoyaltyProgramSelector({
                 data-pol-file-type="component"
               >
                 <div
-                  className="w-5 h-5 rounded-full mr-2 shadow-sm overflow-hidden flex items-center justify-center"
+                  style={{
+                    background: selectedProgram.logo,
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                  }}
+                  className="mr-2"
                   data-pol-id="5s8udr"
                   data-pol-file-name="loyalty-program-selector"
                   data-pol-file-type="component"
-                >
-                  <img
-                    src={selectedProgram.logo}
-                    alt={selectedProgram.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                ></div>
                 <span
                   className="font-medium"
                   data-pol-id="sfj3w5"
@@ -189,17 +189,17 @@ export default function LoyaltyProgramSelector({
                     data-pol-file-type="component"
                   >
                     <div
-                      className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center"
+                      style={{
+                        background: program.logo,
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                      }}
+                      className="mr-2"
                       data-pol-id={`xy3fgc_${index}`}
                       data-pol-file-name="loyalty-program-selector"
                       data-pol-file-type="component"
-                    >
-                      <img
-                        src={program.logo}
-                        alt={program.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    ></div>
                     <span
                       className="font-medium text-slate-700 dark:text-slate-300"
                       data-pol-id={`3jqc9g_${index}`}

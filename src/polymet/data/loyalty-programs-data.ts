@@ -20,7 +20,7 @@ export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
     brandColor: "#1C3F94", // Marriott blue
     secondaryColor: "#F58025", // Marriott orange
     textColor: "#FFFFFF",
-    logo: "https://cdn.brandfetch.io/id0DQ-cAhI/w/360/h/360/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX&t=1667620308778",
+    logo: "linear-gradient(135deg, #1C3F94, #F58025)", // Marriott gradient
     pointsPerDollar: 10,
     bonusMultiplier: {
       eliteStatus: 1.5, // 50% bonus for elite status
@@ -34,7 +34,7 @@ export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
     brandColor: "#00406A", // Hilton blue
     secondaryColor: "#DC143C", // Hilton red
     textColor: "#FFFFFF",
-    logo: "https://www.atimeshare.com/wp-content/uploads/2024/11/Hilton-Honors-Logo-teal-copy.png",
+    logo: "linear-gradient(135deg, #00406A, #DC143C)", // Hilton gradient
     pointsPerDollar: 10,
     bonusMultiplier: {
       eliteStatus: 2, // 100% bonus for elite status
@@ -48,7 +48,7 @@ export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
     brandColor: "#000000", // IHG black
     secondaryColor: "#C41230", // IHG red
     textColor: "#FFFFFF",
-    logo: "https://www.nevistas.com/ul/4/2022/04/13/18.jpg",
+    logo: "linear-gradient(135deg, #000000, #C41230)", // IHG gradient
     pointsPerDollar: 10,
     bonusMultiplier: {
       eliteStatus: 1.6, // 60% bonus for elite status
@@ -62,8 +62,8 @@ export const LOYALTY_PROGRAMS: LoyaltyProgram[] = [
     brandColor: "#E2001A", // Accor red
     secondaryColor: "#000000", // Accor black
     textColor: "#FFFFFF",
-    logo: "https://rebrand.com/wp-content/uploads/2019/11/Accor-Thumbnail-800X600.jpg",
-    pointsPerDollar: 2.5, // Accor has a different points structure
+    logo: "linear-gradient(135deg, #E2001A, #000000)", // Accor gradient
+    pointsPerDollar: 2.5,
     bonusMultiplier: {
       eliteStatus: 1.25, // 25% bonus for elite status
       promotions: 1.2,
