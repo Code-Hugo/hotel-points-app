@@ -1,7 +1,7 @@
 "use client";
 
-// import * as React from "react";
 import { format } from "date-fns";
+import { enGB } from "date-fns/locale"; // ✅ Added for Monday-start week
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
@@ -32,11 +32,7 @@ export default function DateRangePicker({
       data-pol-file-name="date-range-picker"
       data-pol-file-type="component"
     >
-      <Popover
-        data-pol-id="bz1z8x"
-        data-pol-file-name="date-range-picker"
-        data-pol-file-type="component"
-      >
+      <Popover data-pol-id="bz1z8x" data-pol-file-name="date-range-picker" data-pol-file-type="component">
         <PopoverTrigger
           asChild
           data-pol-id="pbproy"
@@ -47,7 +43,7 @@ export default function DateRangePicker({
             variant={"outline"}
             className={cn(
               "w-full justify-start text-left font-normal",
-              !dateRange && "text-muted-foreground",
+              !dateRange && "text-muted-foreground"
             )}
             data-pol-id="wamh1l"
             data-pol-file-name="date-range-picker"
@@ -62,8 +58,7 @@ export default function DateRangePicker({
             {dateRange?.from ? (
               dateRange.to ? (
                 <>
-                  {format(dateRange.from, "LLL dd, y")} -{" "}
-                  {format(dateRange.to, "LLL dd, y")}
+                  {format(dateRange.from, "LLL dd, y")} - {format(dateRange.to, "LLL dd, y")}
                 </>
               ) : (
                 format(dateRange.from, "LLL dd, y")
@@ -93,6 +88,7 @@ export default function DateRangePicker({
             selected={dateRange}
             onSelect={onDateRangeChange}
             numberOfMonths={2}
+            locale={enGB} // ✅ Make weeks start on Monday
             className="rounded-md border"
             data-pol-id="yw75mm"
             data-pol-file-name="date-range-picker"
