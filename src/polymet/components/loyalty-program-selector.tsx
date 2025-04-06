@@ -208,18 +208,6 @@ export default function LoyaltyProgramSelector({
                     >
                       {program.name}
                     </span>
-                    <div
-                      className="text-xs px-2 py-0.5 rounded-full ml-auto"
-                      style={{
-                        backgroundColor: `${program.brandColor}15`,
-                        color: program.brandColor,
-                      }}
-                      data-pol-id={`vlu1kk_${index}`}
-                      data-pol-file-name="loyalty-program-selector"
-                      data-pol-file-type="component"
-                    >
-                      {program.pointsPerDollar}x
-                    </div>
                     <Check
                       className={cn(
                         "ml-auto h-4 w-4",
