@@ -1,54 +1,37 @@
-# React + TypeScript + Vite
+# 🏨 Hotel Points Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Estimate how many loyalty points you can earn on your next hotel stay with major hotel chains like Marriott Bonvoy, Hilton Honors, IHG One Rewards, and more.
 
-Currently, two official plugins are available:
+## ✨ Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+👉 [Visit the App](https://hotel-points-app-9k35.vercel.app)
 
-## Expanding the ESLint configuration
+## 📦 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React + TypeScript**
+- **Vite** for lightning-fast build tooling
+- **Tailwind CSS** for styling
+- **ShadCN UI** components
+- **Vercel** for deployment
+- **@vercel/analytics** for lightweight analytics
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🔧 Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🌐 Interactive calculator for major hotel loyalty programs
+- 🧮 Points estimated based on brand-specific rules
+- 🎨 Clean, responsive UI with light/dark mode support
+- 🔁 Instant updates thanks to Hot Module Reloading (Vite)
+- 🚀 Automatically deployed with Vercel
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 Project Structure
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+```bash
+.
+├── public/               # Static assets
+├── src/
+│   ├── components/       # Reusable UI components
+│   ├── polymet/          # App logic and pages
+│   ├── index.css         # Tailwind styles
+│   └── main.tsx          # App entry point
+├── tailwind.config.js    # Tailwind config
+└── vite.config.ts        # Vite config
