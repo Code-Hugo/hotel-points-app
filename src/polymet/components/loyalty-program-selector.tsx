@@ -99,11 +99,11 @@ export default function LoyaltyProgramSelector({
                 <div
                   style={{
                     background: selectedProgram.logo,
-                    width: '40px',
-                    height: '40px',
+                    width: '24px',
+                    height: '24px',
                     borderRadius: '50%',
                   }}
-                  className="mr-2"
+                  className="mr-1 flex-shrink-0"
                   data-pol-id="5s8udr"
                   data-pol-file-name="loyalty-program-selector"
                   data-pol-file-type="component"
@@ -191,11 +191,11 @@ export default function LoyaltyProgramSelector({
                     <div
                       style={{
                         background: program.logo,
-                        width: '40px',
-                        height: '40px',
+                        width: '24px',
+                        height: '24px',
                         borderRadius: '50%',
                       }}
-                      className="mr-2"
+                      className="mr-1 flex-shrink-0"
                       data-pol-id={`xy3fgc_${index}`}
                       data-pol-file-name="loyalty-program-selector"
                       data-pol-file-type="component"

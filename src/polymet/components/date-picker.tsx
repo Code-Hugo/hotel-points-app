@@ -1,6 +1,5 @@
 "use client";
 
-//import * as React from "react";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
@@ -33,6 +32,9 @@ export default function DatePicker({
   minDate,
   disabled = false,
 }: DatePickerProps) {
+  const today = new Date();
+  const minSelectableDate = minDate ?? today;
+
   return (
     <div className={cn("grid gap-2", className)}>
       <Label htmlFor={`date-${label.toLowerCase().replace(/\s+/g, "-")}`}>
@@ -42,7 +44,7 @@ export default function DatePicker({
         <PopoverTrigger asChild>
           <Button
             id={`date-${label.toLowerCase().replace(/\s+/g, "-")}`}
-            variant={"outline"}
+            variant="outline"
             className={cn(
               "w-full justify-start text-left font-normal h-11 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200",
               !date && "text-muted-foreground",
@@ -51,11 +53,7 @@ export default function DatePicker({
             disabled={disabled}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
-            {date ? (
-              format(date, "LLL dd, y")
-            ) : (
-              <span>{placeholder}</span>
-            )}
+            {date ? format(date, "LLL dd, y") : <span>{placeholder}</span>}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
@@ -64,13 +62,14 @@ export default function DatePicker({
             mode="single"
             selected={date}
             onSelect={onDateChange}
-            disabled={(date) => (minDate ? date < minDate : false)}
+            disabled={(d) => d < minSelectableDate}
             className="rounded-md border"
-            showOutsideDays={true}
+            showOutsideDays
             weekStartsOn={1}
             classNames={{
               day_outside: "text-slate-300 opacity-50",
-              day: "h-9 w-9 text-center"
+              day: "h-9 w-9 text-center",
+              day_disabled: "text-muted-foreground opacity-40 cursor-not-allowed",
             }}
           />
         </PopoverContent>

@@ -80,21 +80,20 @@ function Calendar({
           "w-9 h-9 p-0 font-medium text-sm hover:bg-muted focus:outline-none"
         ),
         day_selected: "bg-primary text-white hover:bg-primary focus:bg-primary border-2 border-primary",
-        day_today:
-          "border border-primary text-primary font-bold",
+        day_today: "border border-primary text-primary font-bold",
         day_outside:
           "text-muted-foreground opacity-50 aria-selected:bg-accent/50",
-        day_disabled: "text-muted-foreground opacity-50",
+        day_disabled: "text-slate-300 opacity-50",
         day_range_middle: "bg-accent text-accent-foreground",
         day_range_start: "bg-primary text-white rounded-l-md",
         day_range_end: "bg-primary text-white rounded-r-md",
         day_hidden: "invisible",
         ...classNames,
       }}
-      {...props}
       disabled={{
-        before: new Date(),
+        before: new Date(), // ✅ disables past dates
       }}
+      {...props}
     />
   )
 }
