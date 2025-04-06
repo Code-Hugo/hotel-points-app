@@ -47,7 +47,7 @@ export default function HotelPointsCalculatorPage() {
             data-pol-file-name="hotel-points-calculator"
             data-pol-file-type="page"
           >
-            Hotel Points Calculator
+            Hotel Loyalty Points Calculator
           </h1>
           <p
             className="text-slate-600 dark:text-slate-400 max-w-2xl text-lg"
@@ -55,8 +55,7 @@ export default function HotelPointsCalculatorPage() {
             data-pol-file-name="hotel-points-calculator"
             data-pol-file-type="page"
           >
-            Estimate how many loyalty points you'll earn on your next hotel stay
-            with major hotel chains
+            Estimate loyalty points for your next stay with global hotel chains.
           </p>
         </div>
 

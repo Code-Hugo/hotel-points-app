@@ -50,7 +50,7 @@ export default function LoyaltyProgramSelector({
         data-pol-file-name="loyalty-program-selector"
         data-pol-file-type="component"
       >
-        Loyalty Program
+        Loyalty program
       </Label>
       <Popover
         open={open}

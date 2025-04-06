@@ -142,7 +142,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
               data-pol-file-type="component"
             />
           </div>
-          Hotel Points Calculator
+          Calculator
         </CardTitle>
         <CardDescription
           className="text-white/80"
@@ -150,7 +150,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           data-pol-file-name="points-calculator"
           data-pol-file-type="component"
         >
-          Estimate loyalty points for your hotel stay
+          Please provide the following details to estimate your points
         </CardDescription>
       </CardHeader>
       <CardContent
@@ -172,7 +172,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
             data-pol-file-type="component"
           >
             <DatePicker
-              label="Check-in Date"
+              label="Check-in date"
               date={checkInDate}
               onDateChange={handleCheckInDateChange}
               placeholder="Select check-in"
@@ -182,7 +182,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
             />
 
             <DatePicker
-              label="Check-out Date"
+              label="Check-out date"
               date={checkOutDate}
               onDateChange={setCheckOutDate}
               placeholder="Select check-out"

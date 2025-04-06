@@ -59,7 +59,7 @@ export default function AmountInput({
         data-pol-file-name="amount-input"
         data-pol-file-type="component"
       >
-        Stay Amount (excluding tax)
+        Stay amount in $ (excl. tax)
       </Label>
       <div
         className="relative"

@@ -62,7 +62,7 @@ export default function PointsResultDisplay({
             data-pol-file-name="points-result-display"
             data-pol-file-type="component"
           >
-            Estimated Points
+            Estimated points
           </div>
 
           {isCalculating ? (
