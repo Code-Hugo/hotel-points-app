@@ -1,4 +1,4 @@
-# 🏨 Hotel Points Calculator
+# 🏨 StaysPoints
 
 Estimate how many loyalty points you can earn on your next hotel stay with major hotel chains like Marriott Bonvoy, Hilton Honors, IHG One Rewards, and more.
 

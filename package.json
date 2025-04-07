@@ -1,5 +1,6 @@
 {
-  "name": "polymet-react-app",
+  "name": "stayspoints",
+  "description": "Application to calculate hotel loyalty points",
   "private": true,
   "version": "0.0.0",
   "type": "module",
