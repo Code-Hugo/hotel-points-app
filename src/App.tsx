@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import HotelPointsCalculatorPage from "@/polymet/pages/hotel-points-calculator";
 import { Analytics } from "@vercel/analytics/react";
 import { inject } from "@vercel/analytics";
+import Privacy from "./pages/Privacy";
 
 // Call inject function to initialize analytics
 inject();
@@ -55,6 +56,7 @@ export default function HotelPointsCalculatorPrototype() {
           data-pol-file-type="prototype"
         />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
     </Router>
   );

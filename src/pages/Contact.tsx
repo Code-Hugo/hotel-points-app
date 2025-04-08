@@ -90,19 +90,20 @@ export default function Contact() {
             />
           </div>
 
-          <div className="flex items-start">
+          <div className="flex items-start space-x-2 text-sm text-gray-700">
             <input
               type="checkbox"
               id="consent"
               checked={consent}
-              onChange={(e) => {
-                setConsent(e.target.checked);
-                if (e.target.checked) setConsentError("");
-              }}
-              className="mt-1 mr-2"
+              onChange={(e) => setConsent(e.target.checked)}
+              className="mt-1"
+              required
             />
-            <label htmlFor="consent" className="text-sm text-gray-600">
-              I consent to the processing of my email and feedback for the purpose of this message, in accordance with the privacy policy.
+            <label htmlFor="consent">
+              I consent to the processing of my email and feedback for the purpose of this message, in accordance with the{" "}
+              <a href="/privacy" className="underline hover:text-black">
+                privacy policy
+              </a>.
             </label>
           </div>
           {consentError && <p className="text-sm text-red-600">{consentError}</p>}
