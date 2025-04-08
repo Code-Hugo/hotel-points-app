@@ -5,9 +5,16 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!consent) {
+      setConsentError("You must consent to the processing of your data.");
+      return;
+    }
 
     const templateParams = {
       name: email,
@@ -29,6 +36,8 @@ export default function Contact() {
           setStatus("✅ Feedback sent successfully!");
           setEmail("");
           setMessage("");
+          setConsent(false);
+          setConsentError("");
 
           setTimeout(() => {
             setStatus("");
@@ -80,6 +89,23 @@ export default function Contact() {
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
+
+          <div className="flex items-start">
+            <input
+              type="checkbox"
+              id="consent"
+              checked={consent}
+              onChange={(e) => {
+                setConsent(e.target.checked);
+                if (e.target.checked) setConsentError("");
+              }}
+              className="mt-1 mr-2"
+            />
+            <label htmlFor="consent" className="text-sm text-gray-600">
+              I consent to the processing of my email and feedback for the purpose of this message, in accordance with the privacy policy.
+            </label>
+          </div>
+          {consentError && <p className="text-sm text-red-600">{consentError}</p>}
 
           <button
             type="submit"
