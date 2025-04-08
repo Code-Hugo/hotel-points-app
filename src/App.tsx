@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Calculator from "./pages/Calculator";
+import Contact from "./pages/Contact";
 import HotelPointsCalculatorPage from "@/polymet/pages/hotel-points-calculator";
 import { Analytics } from "@vercel/analytics/react";
 import { inject } from "@vercel/analytics";
@@ -13,6 +16,7 @@ export default function HotelPointsCalculatorPrototype() {
       data-pol-file-name="hotel-points-calculator-prototype"
       data-pol-file-type="prototype"
     >
+      <Navbar />
       <Routes
         data-pol-id="i4wk22"
         data-pol-file-name="hotel-points-calculator-prototype"
@@ -50,6 +54,7 @@ export default function HotelPointsCalculatorPrototype() {
           data-pol-file-name="hotel-points-calculator-prototype"
           data-pol-file-type="prototype"
         />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );

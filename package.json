@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -100,7 +101,7 @@
     "react-pdf": "latest",
     "react-plotly.js": "latest",
     "react-resizable-panels": "latest",
-    "react-router-dom": "latest",
+    "react-router-dom": "^7.5.0",
     "react-syntax-highlighter": "latest",
     "react-type-animation": "latest",
     "reactflow": "latest",
