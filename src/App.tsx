@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Calculator from "./pages/Calculator";
+// import Calculator from "./pages/Calculator"; // Removed unused import
 import Contact from "./pages/Contact";
 import HotelPointsCalculatorPage from "@/polymet/pages/hotel-points-calculator";
 import { Analytics } from "@vercel/analytics/react";
