@@ -142,7 +142,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
               data-pol-file-type="component"
             />
           </div>
-          Calculator
+          Hotel Points Calculator
         </CardTitle>
         <CardDescription
           className="text-white/80"

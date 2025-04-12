@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-hotel">
+  <path d="M3 9v12h18V9" />
+  <path d="M9 22V12h6v10" />
+  <path d="M12 12V9" />
+  <path d="M3 9l9-6 9 6" />
+</svg> 
