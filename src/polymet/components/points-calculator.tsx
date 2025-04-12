@@ -25,70 +25,28 @@ import DatePicker from "@/polymet/components/date-picker";
 import LoyaltyProgramSelector from "@/polymet/components/loyalty-program-selector";
 import AmountInput from "@/polymet/components/amount-input";
 import PointsResultDisplay from "@/polymet/components/points-result-display";
+import { usePointsForm } from "@/hooks/usePointsForm";
 
 interface PointsCalculatorProps {
   className?: string;
 }
 
 export default function PointsCalculator({ className }: PointsCalculatorProps) {
-  const [checkInDate, setCheckInDate] = React.useState<Date | undefined>();
-  const [checkOutDate, setCheckOutDate] = React.useState<Date | undefined>();
-  const [selectedProgram, setSelectedProgram] = React.useState<
-    LoyaltyProgram | undefined
-  >();
-  const [amount, setAmount] = React.useState("");
-  const [points, setPoints] = React.useState(0);
-  const [isCalculating, setIsCalculating] = React.useState(false);
-
-  const calculatePoints = () => {
-    if (!selectedProgram || !amount || isNaN(parseFloat(amount))) {
-      return 0;
-    }
-
-    const stayAmount = parseFloat(amount);
-    const basePoints = stayAmount * selectedProgram.pointsPerDollar;
-
-    // Apply any multipliers (simplified for this example)
-    const multiplier = selectedProgram.bonusMultiplier?.eliteStatus || 1;
-
-    return basePoints * multiplier;
-  };
-
-  const handleCalculate = () => {
-    setIsCalculating(true);
-
-    // Simulate calculation delay for better UX
-    setTimeout(() => {
-      setPoints(calculatePoints());
-      setIsCalculating(false);
-    }, 800);
-  };
-
-  const getNumberOfNights = () => {
-    if (!checkInDate || !checkOutDate) return 0;
-    return differenceInDays(checkOutDate, checkInDate);
-  };
-
-  const isFormValid = () => {
-    return (
-      selectedProgram &&
-      amount &&
-      parseFloat(amount) > 0 &&
-      checkInDate &&
-      checkOutDate &&
-      checkOutDate > checkInDate
-    );
-  };
-
-  // Handle check-in date change
-  const handleCheckInDateChange = (date: Date | undefined) => {
-    setCheckInDate(date);
-
-    // If check-out date is before the new check-in date, reset it
-    if (date && checkOutDate && checkOutDate <= date) {
-      setCheckOutDate(undefined);
-    }
-  };
+  const {
+    checkInDate,
+    checkOutDate,
+    selectedProgram,
+    amount,
+    points,
+    isCalculating,
+    handleCheckInDateChange,
+    setCheckOutDate,
+    setSelectedProgram,
+    setAmount,
+    handleCalculate,
+    isFormValid,
+    getNumberOfNights,
+  } = usePointsForm();
 
   return (
     <Card
