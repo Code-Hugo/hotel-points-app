@@ -1,9 +1,14 @@
 "use client";
 
-import * as React from "react";
-import { differenceInDays } from "date-fns";
+// import * as React from "react"; // Removed unused import
+// import { differenceInDays } from "date-fns"; // Removed unused import
 import { CalculatorIcon, InfoIcon, SparklesIcon } from "lucide-react";
-
+// import { LoyaltyProgram } from "@/polymet/data/loyalty-programs-data"; // Removed unused import
+import DatePicker from "@/polymet/components/date-picker";
+import LoyaltyProgramSelector from "@/polymet/components/loyalty-program-selector";
+import AmountInput from "@/polymet/components/amount-input";
+import PointsResultDisplay from "@/polymet/components/points-result-display";
+import { usePointsForm } from "@/hooks/usePointsForm";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,12 +25,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { LoyaltyProgram } from "@/polymet/data/loyalty-programs-data";
-import DatePicker from "@/polymet/components/date-picker";
-import LoyaltyProgramSelector from "@/polymet/components/loyalty-program-selector";
-import AmountInput from "@/polymet/components/amount-input";
-import PointsResultDisplay from "@/polymet/components/points-result-display";
-import { usePointsForm } from "@/hooks/usePointsForm";
 
 interface PointsCalculatorProps {
   className?: string;
