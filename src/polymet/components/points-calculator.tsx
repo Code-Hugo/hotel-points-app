@@ -143,11 +143,6 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
               date={checkOutDate}
               onDateChange={setCheckOutDate}
               placeholder="Select check-out"
-              minDate={
-                checkInDate
-                  ? new Date(checkInDate.getTime() + 86400000)
-                  : undefined
-              }
               disabled={!checkInDate}
               data-pol-id="4jfi92"
               data-pol-file-name="points-calculator"
