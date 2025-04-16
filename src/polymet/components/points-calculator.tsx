@@ -261,6 +261,37 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
             data-pol-file-type="component"
           />
         </div>
+
+        {selectedProgram && parseFloat(amount) > 0 && points > 0 && (
+          <div className="border rounded-xl bg-slate-50 dark:bg-slate-800/40 p-4 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+            <div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">Cash Price</div>
+              <div className="text-lg font-semibold">${amount}</div>
+            </div>
+
+            <div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">Points Required</div>
+              <div className="text-lg font-semibold">{points} pts</div>
+            </div>
+
+            <div>
+              <div className="text-sm text-slate-500 dark:text-slate-400">Value per Point</div>
+              <div className={`text-lg font-bold ${
+                (parseFloat(amount) / points) > 0.015 ? 'text-emerald-600' : 'text-amber-500'
+              }`}>
+                {(parseFloat(amount) / points).toFixed(2)}¢/pt
+              </div>
+            </div>
+          </div>
+        )}
+
+        {selectedProgram && parseFloat(amount) > 0 && points > 0 && (parseFloat(amount) / points) > 0.015 && (
+          <div className="mt-2">
+            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full inline-block">
+              Recommended to use points
+            </span>
+          </div>
+        )}
       </CardContent>
       <CardFooter
         className="bg-slate-50/80 dark:bg-slate-800/20 border-t p-4"
