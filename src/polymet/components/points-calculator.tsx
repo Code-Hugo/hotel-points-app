@@ -1,9 +1,6 @@
 "use client";
 
-// import * as React from "react"; // Removed unused import
-// import { differenceInDays } from "date-fns"; // Removed unused import
 import { CalculatorIcon, InfoIcon, SparklesIcon } from "lucide-react";
-// import { LoyaltyProgram } from "@/polymet/data/loyalty-programs-data"; // Removed unused import
 import DatePicker from "@/polymet/components/date-picker";
 import LoyaltyProgramSelector from "@/polymet/components/loyalty-program-selector";
 import AmountInput from "@/polymet/components/amount-input";
@@ -50,7 +47,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
   return (
     <Card
       className={cn(
-        "w-full max-w-md overflow-hidden border-0 shadow-lg",
+        "w-full md:max-w-xl sm:rounded-xl p-4 overflow-hidden border-0 shadow-lg",
         selectedProgram
           ? "shadow-[0_0_30px_rgba(0,0,0,0.1)]"
           : "shadow-[0_4px_24px_rgba(0,0,0,0.05)]",
@@ -67,7 +64,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
     >
       <CardHeader
         className={cn(
-          "pb-2 border-b bg-gradient-to-r from-indigo-500 to-purple-600 text-white",
+          "pb-4 border-b bg-gradient-to-r from-indigo-500 to-purple-600 text-white",
           selectedProgram &&
             `bg-gradient-to-r from-[${selectedProgram.brandColor}] to-[${selectedProgram.secondaryColor || selectedProgram.brandColor}]`,
         )}
@@ -81,7 +78,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
         data-pol-file-type="component"
       >
         <CardTitle
-          className="flex items-center text-white"
+          className="flex items-center text-xl font-semibold tracking-wide justify-center"
           data-pol-id="nu2nf2"
           data-pol-file-name="points-calculator"
           data-pol-file-type="component"
@@ -152,7 +149,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
 
           {checkInDate && checkOutDate && checkOutDate > checkInDate && (
             <div
-              className="text-sm px-3 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 inline-block"
+              className="text-sm font-medium bg-indigo-100 dark:bg-indigo-800/40 border border-indigo-200 dark:border-indigo-700 px-4 py-1.5 rounded-full inline-block text-indigo-800 dark:text-indigo-300"
               data-pol-id="x7u8xz"
               data-pol-file-name="points-calculator"
               data-pol-file-type="component"
@@ -253,15 +250,17 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           )}
         </div>
 
-        <PointsResultDisplay
-          points={points}
-          program={selectedProgram}
-          isCalculating={isCalculating}
-          className="mt-6"
-          data-pol-id="serb7e"
-          data-pol-file-name="points-calculator"
-          data-pol-file-type="component"
-        />
+        <div className="rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 p-4 border border-indigo-100 dark:border-slate-700">
+          <PointsResultDisplay
+            points={points}
+            program={selectedProgram}
+            isCalculating={isCalculating}
+            className="mt-6"
+            data-pol-id="serb7e"
+            data-pol-file-name="points-calculator"
+            data-pol-file-type="component"
+          />
+        </div>
       </CardContent>
       <CardFooter
         className="bg-slate-50/80 dark:bg-slate-800/20 border-t p-4"
@@ -272,7 +271,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
         <Button
           onClick={handleCalculate}
           className={cn(
-            "w-full text-white font-medium transition-all duration-300",
+            "w-full text-white font-medium transition-all duration-300 hover:scale-[1.02] active:scale-100 focus:ring-2 focus:ring-indigo-400",
             !isFormValid() ? "opacity-70" : "opacity-100",
             "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700",
           )}
@@ -291,16 +290,14 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           Calculate Points
         </Button>
       </CardFooter>
-      <div
-        className="text-xs text-left text-slate-500 dark:text-slate-400 mt-4 p-2 border-t border-slate-200 dark:border-slate-700"
-        data-pol-id="disclaimer"
-        data-pol-file-name="points-calculator"
-        data-pol-file-type="component"
-      >
-        <strong>Disclaimer:</strong> StaysPoints is an independent project created for informational and illustrative purposes only. This website is not affiliated with, endorsed by, or sponsored by any hotel brand displayed herein. All trademarks, brand names, and logos are the property of their respective owners.
-        <br /><br />
-        The points estimates shown are amateur calculations based on publicly available data and are intended for illustrative purposes only. They should not be considered accurate representations of actual loyalty program earnings. Always refer to the official websites of each hotel brand for up-to-date and accurate rewards information.
-      </div>
+      <details className="text-xs mt-4 text-slate-500 dark:text-slate-400">
+        <summary className="cursor-pointer underline">Disclaimer</summary>
+        <p className="mt-2">
+          StaysPoints is an independent project created for informational and illustrative purposes only. This website is not affiliated with, endorsed by, or sponsored by any hotel brand displayed herein. All trademarks, brand names, and logos are the property of their respective owners.
+          <br /><br />
+          The points estimates shown are amateur calculations based on publicly available data and are intended for illustrative purposes only. They should not be considered accurate representations of actual loyalty program earnings. Always refer to the official websites of each hotel brand for up-to-date and accurate rewards information.
+        </p>
+      </details>
     </Card>
   );
 }
