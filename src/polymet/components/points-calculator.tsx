@@ -284,14 +284,6 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
             </div>
           </div>
         )}
-
-        {selectedProgram && parseFloat(amount) > 0 && points > 0 && (parseFloat(amount) / points) > 0.015 && (
-          <div className="mt-2">
-            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full inline-block">
-              Recommended to use points
-            </span>
-          </div>
-        )}
       </CardContent>
       <CardFooter
         className="bg-slate-50/80 dark:bg-slate-800/20 border-t p-4"
