@@ -123,6 +123,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           data-pol-file-name="points-calculator"
           data-pol-file-type="component"
         >
+<<<<<<< ej67rc-codex/redesign-ui-and-fix-bugs
           <div
             className="grid gap-4 sm:grid-cols-2 items-end"
             data-pol-id="votj2i"
@@ -131,17 +132,25 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           >
             <DateRangePicker
               label="Stay dates"
+=======
+          <div className="grid gap-4 sm:grid-cols-2" data-pol-id="votj2i" data-pol-file-name="points-calculator" data-pol-file-type="component">
+            <DateRangePicker
+>>>>>>> main
               dateRange={{ from: checkInDate, to: checkOutDate }}
               onDateRangeChange={(range) => {
                 handleCheckInDateChange(range?.from);
                 setCheckOutDate(range?.to);
               }}
+<<<<<<< ej67rc-codex/redesign-ui-and-fix-bugs
             />
             <CurrencySelector
               currency={currency}
               onCurrencyChange={setCurrency}
               className="w-full"
+=======
+>>>>>>> main
             />
+            <CurrencySelector currency={currency} onCurrencyChange={setCurrency} />
           </div>
 
           {checkInDate && checkOutDate && checkOutDate > checkInDate && (
