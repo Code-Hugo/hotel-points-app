@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { DollarSignIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -10,12 +9,14 @@ import { Label } from "@/components/ui/label";
 interface AmountInputProps {
   value: string;
   onChange: (value: string) => void;
+  currency?: string;
   className?: string;
 }
 
 export default function AmountInput({
   value,
   onChange,
+  currency = "USD",
   className,
 }: AmountInputProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +46,8 @@ export default function AmountInput({
     }).format(numValue);
   };
 
+  const symbol = currency === "USD" ? "$" : currency === "EUR" ? "€" : currency === "GBP" ? "£" : currency === "JPY" ? "¥" : "A$";
+
   return (
     <div
       className={cn("grid gap-2", className)}
@@ -59,7 +62,7 @@ export default function AmountInput({
         data-pol-file-name="amount-input"
         data-pol-file-type="component"
       >
-        Stay amount in $ (excl. tax)
+        Stay amount in {currency} (excl. tax)
       </Label>
       <div
         className="relative"
@@ -73,12 +76,9 @@ export default function AmountInput({
           data-pol-file-name="amount-input"
           data-pol-file-type="component"
         >
-          <DollarSignIcon
-            className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400"
-            data-pol-id="s57raw"
-            data-pol-file-name="amount-input"
-            data-pol-file-type="component"
-          />
+          <span className="text-indigo-600 dark:text-indigo-400 font-semibold text-xs">
+            {symbol}
+          </span>
         </div>
         <Input
           type="text"
@@ -105,7 +105,8 @@ export default function AmountInput({
             data-pol-file-name="amount-input"
             data-pol-file-type="component"
           >
-            ${formatAsCurrency()}
+            {symbol}
+            {formatAsCurrency()}
           </span>
         </div>
       )}

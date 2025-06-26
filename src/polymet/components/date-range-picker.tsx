@@ -8,6 +8,7 @@ import { DateRange } from "react-day-picker";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
+import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
@@ -18,18 +19,30 @@ interface DateRangePickerProps {
   className?: string;
   dateRange: DateRange | undefined;
   onDateRangeChange: (range: DateRange | undefined) => void;
+  label?: string;
+  minDate?: Date;
 }
 
 export default function DateRangePicker({
   className,
   dateRange,
   onDateRangeChange,
+  label = "Stay dates",
+  minDate,
 }: DateRangePickerProps) {
+  const today = new Date();
+  const minSelectable = minDate ?? today;
   return (
     <div className={cn("grid gap-2", className)}>
+      {label && (
+        <Label htmlFor="date-range-picker" className="text-sm font-medium">
+          {label}
+        </Label>
+      )}
       <Popover>
         <PopoverTrigger asChild>
           <Button
+            id="date-range-picker"
             variant="outline"
             className={cn(
               "w-full justify-start text-left font-normal h-11 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all duration-200",
@@ -60,7 +73,15 @@ export default function DateRangePicker({
             onSelect={onDateRangeChange}
             defaultMonth={dateRange?.from}
             locale={enGB}
+            disabled={(date) => date < minSelectable}
+            showOutsideDays
+            weekStartsOn={1}
             className="rounded-md border"
+            classNames={{
+              day_outside: "text-slate-300 opacity-50",
+              day: "h-9 w-9 text-center",
+              day_disabled: "text-muted-foreground opacity-40 cursor-not-allowed",
+            }}
           />
         </PopoverContent>
       </Popover>

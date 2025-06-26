@@ -9,14 +9,23 @@ export function usePointsForm() {
   const [amount, setAmount] = useState("");
   const [points, setPoints] = useState(0);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [currency, setCurrency] = useState("USD");
+
+  const exchangeRates: Record<string, number> = {
+    USD: 1,
+    EUR: 1.1,
+    GBP: 1.25,
+    JPY: 0.009,
+    AUD: 0.65,
+  };
 
   const calculatePoints = () => {
     if (!selectedProgram || !amount || isNaN(parseFloat(amount))) {
       return 0;
     }
 
-    const stayAmount = parseFloat(amount);
-    const basePoints = stayAmount * selectedProgram.pointsPerDollar;
+    const stayAmountUSD = parseFloat(amount) * (exchangeRates[currency] || 1);
+    const basePoints = stayAmountUSD * selectedProgram.pointsPerDollar;
 
     // Apply any multipliers (simplified for this example)
     const multiplier = selectedProgram.bonusMultiplier?.eliteStatus || 1;
@@ -70,8 +79,11 @@ export function usePointsForm() {
     setCheckOutDate,
     setSelectedProgram,
     setAmount,
+    currency,
+    setCurrency,
+    exchangeRates,
     handleCalculate,
     isFormValid,
     getNumberOfNights,
   };
-} 
+}
