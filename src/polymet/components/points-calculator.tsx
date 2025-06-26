@@ -1,9 +1,10 @@
 "use client";
 
 import { CalculatorIcon, InfoIcon, SparklesIcon } from "lucide-react";
-import DatePicker from "@/polymet/components/date-picker";
+import DateRangePicker from "@/polymet/components/date-range-picker";
 import LoyaltyProgramSelector from "@/polymet/components/loyalty-program-selector";
 import AmountInput from "@/polymet/components/amount-input";
+import CurrencySelector from "@/polymet/components/currency-selector";
 import PointsResultDisplay from "@/polymet/components/points-result-display";
 import { usePointsForm } from "@/hooks/usePointsForm";
 import { cn } from "@/lib/utils";
@@ -39,6 +40,9 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
     setCheckOutDate,
     setSelectedProgram,
     setAmount,
+    currency,
+    setCurrency,
+    exchangeRates,
     handleCalculate,
     isFormValid,
     getNumberOfNights,
@@ -120,30 +124,23 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           data-pol-file-type="component"
         >
           <div
-            className="grid grid-cols-2 gap-4"
+            className="grid gap-4 sm:grid-cols-2 items-end"
             data-pol-id="votj2i"
             data-pol-file-name="points-calculator"
             data-pol-file-type="component"
           >
-            <DatePicker
-              label="Check-in date"
-              date={checkInDate}
-              onDateChange={handleCheckInDateChange}
-              placeholder="Select check-in"
-              data-pol-id="1rqm1y"
-              data-pol-file-name="points-calculator"
-              data-pol-file-type="component"
+            <DateRangePicker
+              label="Stay dates"
+              dateRange={{ from: checkInDate, to: checkOutDate }}
+              onDateRangeChange={(range) => {
+                handleCheckInDateChange(range?.from);
+                setCheckOutDate(range?.to);
+              }}
             />
-
-            <DatePicker
-              label="Check-out date"
-              date={checkOutDate}
-              onDateChange={setCheckOutDate}
-              placeholder="Select check-out"
-              disabled={!checkInDate}
-              data-pol-id="4jfi92"
-              data-pol-file-name="points-calculator"
-              data-pol-file-type="component"
+            <CurrencySelector
+              currency={currency}
+              onCurrencyChange={setCurrency}
+              className="w-full"
             />
           </div>
 
@@ -178,6 +175,7 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           <AmountInput
             value={amount}
             onChange={setAmount}
+            currency={currency}
             data-pol-id="fseily"
             data-pol-file-name="points-calculator"
             data-pol-file-type="component"
@@ -266,7 +264,10 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
           <div className="border rounded-xl bg-slate-50 dark:bg-slate-800/40 p-4 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
             <div>
               <div className="text-sm text-slate-500 dark:text-slate-400">Cash Price</div>
-              <div className="text-lg font-semibold">${amount}</div>
+              <div className="text-lg font-semibold">
+                {currency === "USD" ? "$" : currency === "EUR" ? "€" : currency === "GBP" ? "£" : currency === "JPY" ? "¥" : "A$"}
+                {amount}
+              </div>
             </div>
 
             <div>
@@ -276,10 +277,16 @@ export default function PointsCalculator({ className }: PointsCalculatorProps) {
 
             <div>
               <div className="text-sm text-slate-500 dark:text-slate-400">Value per Point</div>
-              <div className={`text-lg font-bold ${
-                (parseFloat(amount) / points) > 0.015 ? 'text-emerald-600' : 'text-amber-500'
-              }`}>
-                {(parseFloat(amount) / points).toFixed(2)}¢/pt
+              <div
+                className={`text-lg font-bold ${
+                  (parseFloat(amount) * (exchangeRates[currency] || 1) / points) > 0.015 ? 'text-emerald-600' : 'text-amber-500'
+                }`}
+              >
+                {(
+                  (parseFloat(amount) * (exchangeRates[currency] || 1)) /
+                  points
+                ).toFixed(2)}
+                ¢/pt
               </div>
             </div>
           </div>
